@@ -8,8 +8,11 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+
 import { SearchPage } from '../pages/search/search';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { RegisterPage } from '../pages/register/register'
+
 
 import { LoginService} from './service/login.service';
 import { UserService} from './service/user.service';
@@ -30,6 +33,7 @@ import { AlertService} from '../pages/alert/alert.service';
     HomePage,
     TabsPage,
     LoginPage,
+    RegisterPage,
     AlertComponent,
     SearchPage,
     PerfilPage
@@ -48,7 +52,8 @@ import { AlertService} from '../pages/alert/alert.service';
     TabsPage,
     LoginPage,
     SearchPage,
-    PerfilPage
+    PerfilPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

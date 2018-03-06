@@ -15,4 +15,6 @@ export class LoginService{
    console.log(user);
    return this.http.get<User>(`${this.urlEndPoint}/${user.userName}/${user.password}`);
  }
+
+ 
 }
