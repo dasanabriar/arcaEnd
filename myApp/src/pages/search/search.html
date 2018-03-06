@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <div>
+      <ion-title>Citas
+        <button ion-button round outline (click)="showAlert()">
+          <img src="assets/icon/searchIcon.png" />
+        </button>
+        <button ion-button round outline (click)="changeView()">
+          <ion-icon ios="ios-apps" md="md-apps"></ion-icon>
+        </button>
+      </ion-title>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="viewSlide">
+    <ion-slides #slider [initialSlide]="1">
+      <ion-slide *ngFor="let user of users">
+        <div class="container">
+          <img class="card-img-top" src={{user.photos[0].imagePath}} alt="">
+          <div class="card border-info mb-3" style="width: 100%;">
+            <div class="card-header bg-transparent border-success">{{user.firstName}}
+              <button ion-button round outline icon-only (click)="addFavorite(user)">
+                <ion-icon ios="ios-heart-outline" md="md-heart-outline">{{user.isFavorite}}</ion-icon>
+              </button>
+              <button ion-button round outline icon-onl >
+                <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+              </button>
+            </div>
+            <img class="card-img-top" src="http://www.kinyu-z.net/data/wallpapers/56/897774.jpg" alt="">
+            <div class="card-body  text-primary">
+              <p class="card-text">Some quick example text to build on the card title.</p>
+              <a href="#" (click)="goToPerfil(user)" class="btn btn-primary">Ver Perfil</a>
+              <a href="#" class="btn btn-primary">Añadir</a>
+            </div>
+          </div>
+        </div>
+
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div *ngIf="!viewSlide">
+    <ion-grid>
+      
+        <ion-row *ngFor="let number of numbersTest">
+          <ion-col width-15 *ngFor="let user of users">
+              <div (click)="goToPerfil(user)" >
+                <img src="http://www.kinyu-z.net/data/wallpapers/56/897774.jpg" alt="">
+              </div>              
+          </ion-col>
+        </ion-row>
+      
+    </ion-grid>
+  </div>
+</ion-content>

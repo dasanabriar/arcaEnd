@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Perfil
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="card border-info mb-3" style="width: 100%;">
+        <div class="card-header bg-transparent border-success">{{userChoosed.firstName}}
+          <button ion-button round outline icon-only (click)="addFavorite(userChoosed)">
+            <ion-icon ios="ios-heart-outline" md="md-heart-outline">{{userChoosed.isFavorite}}</ion-icon>
+          </button>
+          <button ion-button round outline icon-onl >
+            <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+          </button>
+        </div>
+        <img class="card-img-top" src="http://www.kinyu-z.net/data/wallpapers/56/897774.jpg" alt="">
+        <div class="card-body  text-primary">
+          <p class="card-text">Some quick example text to build on the card title.</p>
+          <a href="#" class="btn btn-primary">Añadir</a>
+        </div>
+      </div>
+</ion-content>

@@ -8,8 +8,11 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { SearchPage } from '../pages/search/search';
+import { PerfilPage } from '../pages/perfil/perfil';
 
-import { LoginService} from '../pages/login/login.service';
+import { LoginService} from './service/login.service';
+import { UserService} from './service/user.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -28,6 +31,8 @@ import { AlertService} from '../pages/alert/alert.service';
     TabsPage,
     LoginPage,
     AlertComponent,
+    SearchPage,
+    PerfilPage
   ],
   imports: [
     BrowserModule,
@@ -42,11 +47,14 @@ import { AlertService} from '../pages/alert/alert.service';
     HomePage,
     TabsPage,
     LoginPage,
+    SearchPage,
+    PerfilPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LoginService,
+    UserService,
     AlertService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
