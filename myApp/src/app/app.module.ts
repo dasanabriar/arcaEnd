@@ -8,6 +8,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register'
 
 import { LoginService} from '../pages/login/login.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +28,7 @@ import { AlertService} from '../pages/alert/alert.service';
     HomePage,
     TabsPage,
     LoginPage,
+    RegisterPage,
     AlertComponent,
   ],
   imports: [
@@ -42,6 +44,8 @@ import { AlertService} from '../pages/alert/alert.service';
     HomePage,
     TabsPage,
     LoginPage,
+    RegisterPage,
+
   ],
   providers: [
     StatusBar,

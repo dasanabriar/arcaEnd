@@ -4,14 +4,9 @@ import { LoginService} from './login.service';
 import { User } from './user';
 import { TabsPage} from '../tabs/tabs';
 import { AlertService } from '../alert/alert.service';
+import { RegisterPage } from '../register/register'
 
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -37,6 +32,9 @@ export class LoginPage {
             this.alertService.error('Usuario o password incorrecto');
         });
 
+  }
+  public registerAction(): void{
+      this.navCtrl.push(RegisterPage);
   }
 
 }
