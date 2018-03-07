@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RegisterSearchedPage } from '../register-searched/register-searched';
 
 
 @IonicPage()
@@ -14,6 +15,10 @@ export class RegisterPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  public searchedAction(): void{
+      this.navCtrl.push(RegisterSearchedPage);
   }
 
 }

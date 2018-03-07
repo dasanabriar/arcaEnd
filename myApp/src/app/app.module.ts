@@ -11,7 +11,8 @@ import { LoginPage } from '../pages/login/login';
 
 import { SearchPage } from '../pages/search/search';
 import { PerfilPage } from '../pages/perfil/perfil';
-import { RegisterPage } from '../pages/register/register'
+import { RegisterPage } from '../pages/register/register';
+import { RegisterSearchedPage } from'../pages/register-searched/register-searched';
 
 
 import { LoginService} from './service/login.service';
@@ -36,7 +37,8 @@ import { AlertService} from '../pages/alert/alert.service';
     RegisterPage,
     AlertComponent,
     SearchPage,
-    PerfilPage
+    PerfilPage,
+    RegisterSearchedPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { AlertService} from '../pages/alert/alert.service';
     LoginPage,
     SearchPage,
     PerfilPage,
-    RegisterPage
+    RegisterPage,
+    RegisterSearchedPage
   ],
   providers: [
     StatusBar,
