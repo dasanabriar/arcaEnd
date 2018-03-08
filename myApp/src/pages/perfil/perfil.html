@@ -10,7 +10,13 @@
     <div class="card border-info mb-3" style="width: 100%;">
         <div class="card-header bg-transparent border-success">{{userChoosed.firstName}}
           <button ion-button round outline icon-only (click)="addFavorite(userChoosed)">
-            <ion-icon ios="ios-heart-outline" md="md-heart-outline">{{userChoosed.isFavorite}}</ion-icon>
+            <div *ngIf="userChoosed.isFavorite; then actFavoriteDiv else inactFavoriteDiv"></div>
+                  <ng-template #actFavoriteDiv>
+                    <img src="assets/icon/favorite_icon_act.png" />
+                  </ng-template>
+                  <ng-template #inactFavoriteDiv>
+                    <img src="assets/icon/favorite_icon_inact.png" />
+                  </ng-template>
           </button>
           <button ion-button round outline icon-onl >
             <ion-icon ios="ios-cart" md="md-cart"></ion-icon>

@@ -18,12 +18,17 @@
     <ion-slides #slider [initialSlide]="0">
       <ion-slide *ngFor="let user of users">
         <div class="container">
-          <img class="card-img-top" src={{user.photos[0].imagePath}} alt="">
           <div class="card border-info mb-3" style="width: 100%;">
             <div class="card-header bg-transparent border-success">{{user.firstName}}
               <button ion-button round outline icon-only (click)="addFavorite(user)">
-                <ion-icon ios="ios-heart-outline" md="md-heart-outline">{{user.isFavorite}}</ion-icon>
-              </button>
+                <div *ngIf="user.isFavorite; then actFavoriteDiv else inactFavoriteDiv"></div>
+                  <ng-template #actFavoriteDiv>
+                    <img src="assets/icon/favorite_icon_act.png" />
+                  </ng-template>
+                  <ng-template #inactFavoriteDiv>
+                    <img src="assets/icon/favorite_icon_inact.png" />
+                  </ng-template>
+             </button>
               <button ion-button round outline icon-onl >
                 <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
               </button>
