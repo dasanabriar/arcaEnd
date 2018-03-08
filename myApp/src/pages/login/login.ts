@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginService} from '../../app/service/login.service';
 import { User } from '../../app/entity/user';
-import { SearchPage} from '../search/search';
+import { TabsPage} from '../tabs/tabs';
 import { AlertService } from '../alert/alert.service';
 import { RegisterPage } from '../register/register'
 
@@ -25,7 +25,9 @@ export class LoginPage {
     this.loginService.loginAction(this.user)
         .subscribe(
           data => {
-            this.navCtrl.push(SearchPage);
+            this.navCtrl.push(TabsPage,  {
+              userLogged: data
+            });
           },
         error => {
 

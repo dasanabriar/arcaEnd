@@ -16,7 +16,6 @@ export class UserService {
   
   private urlEndPoint:string = 'http://localhost:8080/api/getUserByCityAndTypeAndPreferences'; 
   private urlEndPointFinal:string = 'http://localhost:8080/api/'; 
-  private urlEndPointUserDummy:string = 'http://localhost:8080/api/getUserDummy'; 
   private httpHeaders = new HttpHeaders({'conten-Type' : 'aplication/json'})
 
   constructor(private http: HttpClient) { }
@@ -26,9 +25,6 @@ export class UserService {
     return this.http.get<User[]>(`${this.urlEndPoint}/${city.idCity}/${userType}/${preferences}`, {headers: this.httpHeaders});
   }
 
-  getUsersDummy(): Observable<User[]> {
-    return this.http.get<User[]>(this.urlEndPointUserDummy);
-  }
   
   addFavorite(favorite: Favorite): Observable<Favorite>{
     if(favorite.idFavorite == undefined){

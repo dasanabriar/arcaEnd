@@ -3,6 +3,7 @@ import { SexType } from './sextype';
 import { Preference } from './preference';
 import { City } from './city';
 import { Favorite } from './favorite';
+import { ClientServiceType } from './clientservicetype';
 
 export class User{
 	idUsers: number;
@@ -11,7 +12,7 @@ export class User{
 	email: string;
 	password: string;
 	userName: string;
-  creationDate: Date;
+  	creationDate: Date;
 	photos: Photo[];
 	userType: number;
 	city: City;
@@ -19,4 +20,7 @@ export class User{
 	sexType: SexType;
 	preferences: Preference[];
 	isFavorite:boolean;
+	dateBirth: Date;
+	age: number;
+	clientServicesType: ClientServiceType[];
 }

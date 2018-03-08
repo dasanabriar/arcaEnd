@@ -15,7 +15,7 @@
 
 <ion-content>
   <div *ngIf="viewSlide">
-    <ion-slides #slider [initialSlide]="1">
+    <ion-slides #slider [initialSlide]="0">
       <ion-slide *ngFor="let user of users">
         <div class="container">
           <img class="card-img-top" src={{user.photos[0].imagePath}} alt="">
