@@ -16,6 +16,7 @@ import { RegisterSearchedPage } from'../pages/register-searched/register-searche
 
 
 import { LoginService} from './service/login.service';
+import { RegisterSearchedService} from './service/register-searched.service';
 import { UserService} from './service/user.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -60,10 +61,11 @@ import { AlertService} from '../pages/alert/alert.service';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, 
     LoginService,
     UserService,
     AlertService,
+    RegisterSearchedService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

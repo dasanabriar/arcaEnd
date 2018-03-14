@@ -1,18 +1,60 @@
-<!--
-  Generated template for the RegisterSearchedPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>registerSearched</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>Tus datos</ion-title>
   </ion-navbar>
 
 </ion-header>
+<!--
+firstName: string;
+lastName: string;
+email: string;
+password: string;
+userName: string;
+  creationDate: Date;
+photos: Photo[];
+userType: number;
+city: City;
+favorites: Favorite[]
+sexType: SexType;
+preferences: Preference[];
+isFavorite:boolean;
+dateBirth: Date;
+age: number;
+-->
 
 
 <ion-content padding>
+  <form #formRegister="ngForm" id="form-register" class="col-lg-6" (ngSubmit)="onSubmit()" autocomplete="off">
+    <ion-list>
+
+      <ion-item>
+        <ion-label color:dark>Nombre * :</ion-label>
+        <ion-input type="text" #firstName="ngModel" name="firstName" [(ngModel)]="user.firstName" required></ion-input>
+      </ion-item>
+      <ion-label *ngIf="!firstName.valid && firstName.touched"  style="color:red; margin-left: 20px;">El nombre es obligatorio</ion-label>
+      <ion-item>
+        <ion-label color:dark>Apellido * :</ion-label>
+        <ion-input type="text" #lastName="ngModel" name="lastName" required [(ngModel)]="user.lastName"></ion-input>
+      </ion-item>
+      <ion-label *ngIf="formRegister.submitted " style="color:red; margin-left: 20px;">El apellido es obligatorio</ion-label>
+        <ion-item>
+          <ion-label color:dark> Email * :</ion-label>
+          <ion-input type="<email></email>" #email="ngModel" name="email" [(ngModel)]="user.email" required></ion-input>
+        </ion-item>
+        <ion-label *ngIf="formRegister.submitted " style="color:red; margin-left: 20px;">El Email es obligatorio</ion-label>
+        <ion-item>
+          <ion-label color:dark>Photos * :</ion-label>
+        </ion-item>
+        <ion-item>
+
+          <input type="file" class="form-control" (change) = "fileChangeEvent($event)" />
+
+        </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button color="primary" class="submit-btn" block [disabled] = "!formRegister.form.valid" > Finalizar Registro</button>
+    </div>
+  </form>
 
 </ion-content>

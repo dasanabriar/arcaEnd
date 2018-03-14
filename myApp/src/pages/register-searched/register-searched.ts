@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { User } from '../../app/entity/user';
+import { RegisterSearchedService} from '../../app/service/register-searched.service';
+import { GLOBAL } from '../../app/service/global';
 
-/**
- * Generated class for the RegisterSearchedPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -14,14 +12,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'register-searched.html',
 })
 export class RegisterSearchedPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private user:User = new User();
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerSearchedService: RegisterSearchedService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterSearchedPage');
   }
 
+  onSubmit(){
+    console.log("Entro");
+    this.registerSearchedService.makeFileRequest(GLOBAL.url+'upload-file', [], this.filesToUpload).then((result) =>{
+      console.log(result);
+  },(error)=>{
+    console.log(error);
+  }
+);
+    console.log(this.user);
+  }
+
+  public filesToUpload;
+  public resultUpload;
+    fileChangeEvent(fileInput:any){
+      this.filesToUpload = <Array<File>>fileInput.target.files;
+      console.log(this.filesToUpload);
+    }
 
 
 }
