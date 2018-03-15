@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Contactar
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+      <ion-list>
+        <ion-item *ngFor="let user of usersChoosed">
+            <ion-thumbnail style="max-width: 300px !important;" item-left>
+                <img src="http://www.kinyu-z.net/data/wallpapers/56/897774.jpg" />
+            </ion-thumbnail>
+          <h2 [innerHTML] = "user.firstName"></h2>
+        </ion-item>
+        </ion-list>
+</ion-content>

@@ -1,13 +1,9 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { ResponseContentType, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { User } from '../entity/user';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs/observable/of';
-import {map} from 'rxjs/operators';
 import { City } from '../entity/city';
-import { Preference } from '../entity/preference';
 import { Favorite } from '../entity/favorite';
 
 @Injectable()
@@ -25,6 +21,9 @@ export class UserService {
     return this.http.get<User[]>(`${this.urlEndPoint}/${city.idCity}/${userType}/${preferences}`, {headers: this.httpHeaders});
   }
 
+  getUsersByIds(idUsers): Observable<User[]> {
+    return this.http.get<User[]>(`${this.urlEndPointFinal + "getFavorites"}/${idUsers}`, {headers: this.httpHeaders});
+  }
   
   addFavorite(favorite: Favorite): Observable<Favorite>{
     if(favorite.idFavorite == undefined){

@@ -4,8 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { FavoritesPage } from '../pages/favorites/favorites';
+import { ShoppingCartPage } from '../pages/shoppingcart/shoppingcart';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
@@ -17,6 +17,8 @@ import { RegisterSearchedPage } from'../pages/register-searched/register-searche
 
 import { LoginService} from './service/login.service';
 import { UserService} from './service/user.service';
+import { ShoppingCartService} from './service/shoppingcart.service';
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,8 +32,8 @@ import { AlertService} from '../pages/alert/alert.service';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
+    FavoritesPage,
+    ShoppingCartPage,
     TabsPage,
     LoginPage,
     RegisterPage,
@@ -49,8 +51,8 @@ import { AlertService} from '../pages/alert/alert.service';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
+    FavoritesPage,
+    ShoppingCartPage,
     TabsPage,
     LoginPage,
     SearchPage,
@@ -63,6 +65,7 @@ import { AlertService} from '../pages/alert/alert.service';
     SplashScreen,
     LoginService,
     UserService,
+    ShoppingCartService,
     AlertService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

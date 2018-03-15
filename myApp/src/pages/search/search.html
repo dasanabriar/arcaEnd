@@ -29,8 +29,8 @@
                     <img src="assets/icon/favorite_icon_inact.png" />
                   </ng-template>
              </button>
-              <button ion-button round outline icon-onl >
-                <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+              <button ion-button round outline icon-only (click)="addContractToShoppingCart(user)" >
+                <ion-icon ios="ios-cart" md="md-cart">{{user.isAddedShopCart}}</ion-icon>
               </button>
             </div>
             <img class="card-img-top" src="http://www.kinyu-z.net/data/wallpapers/56/897774.jpg" alt="">

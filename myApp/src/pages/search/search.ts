@@ -5,12 +5,16 @@ import { Favorite } from '../../app/entity/favorite';
 import { UserService } from '../../app/service/user.service';
 import { PerfilPage} from '../perfil/perfil';
 import { TypeSearch } from '../../app/util/typesearch';
+import { Contract } from '../../app/entity/contract';
+import { ShoppingCartService } from '../../app/service/shoppingcart.service';
+
 
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html'
 })
 export class SearchPage implements OnInit {
+  
   numbersTest = [0,1,2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   preferenceSexs = [];
   users: User[];
@@ -23,7 +27,7 @@ export class SearchPage implements OnInit {
   userLogged: User;
   
   constructor(public navCtrl: NavController, private alertCtrl: AlertController,  private userService: UserService,
-    public navParams: NavParams) {
+    public navParams: NavParams, private shoppingCartService: ShoppingCartService) {
     this.userLogged = navParams.data;
   }
 
@@ -55,6 +59,7 @@ export class SearchPage implements OnInit {
         .subscribe(users1 => {
           this.users = users1
           this.updateFavoritesList();
+          this.updateShoppingCarList();
           this.usersOriginal = this.users;
         });
       
@@ -158,7 +163,19 @@ export class SearchPage implements OnInit {
         us.isFavorite = false;
       }
     });
- }
+  }
+
+  updateShoppingCarList():void {
+    this.users.forEach( us => {
+      let contract : Contract;
+      contract =  this.getContract(us);
+      if(contract){
+        us.isAddedShopCart = true;
+      } else {
+        us.isAddedShopCart = false;
+      }
+    });
+  }
 
   addFavorite(user:User):void {
     let favorite : Favorite;
@@ -185,12 +202,60 @@ export class SearchPage implements OnInit {
     return favorite;
   }
 
-  addCarPurchase():void {
+  getContract(user:User): Contract{
+    let contract : Contract;
+    if(this.userLogged.shoppingcart.idShoppingCart != undefined){
+      contract = this.userLogged.shoppingcart.contracts.find(contractToFind => contractToFind.idUserHired == user.idUsers);
+    }
+    return contract;
+  }
 
+  addContractToShoppingCart(user:User):void {
+    let contract : Contract;
+    if(this.userLogged.shoppingcart.idShoppingCart != undefined){
+      contract = this.getContract(user);
+    }
+
+    // se debe busar si el contracto ya existe,, si existe se debe eliminar
+    if(contract == undefined || contract.idContract == undefined ){
+      contract = new Contract(user.idUsers);
+      console.log("shop " + this.userLogged.shoppingcart + " contract " + this.userLogged.shoppingcart.contracts)
+      this.userLogged.shoppingcart.contracts.push(contract);
+    
+      //save el contract y el shoppingCart
+      this.shoppingCartService.saveShoppingCart(this.userLogged.shoppingcart).subscribe(shoppingcart => {
+      this.userLogged.shoppingcart = shoppingcart;
+      this.updateShoppingCarList();
+      });
+      
+    } else {
+      //delete el contracto y  actualizar la lista de contractos del shopping y returna la funcion.
+      
+      
+      // no me funciono el filter de un array :S
+      for(let i = 0; i < this.userLogged.shoppingcart.contracts.length; i++) {
+ 
+        if(this.userLogged.shoppingcart.contracts[i].idContract == contract.idContract){
+          this.userLogged.shoppingcart.contracts.splice(i, 1);
+          break;
+        }
+   
+      }
+      
+      this.shoppingCartService.deleteContract(contract).subscribe(contr =>{
+        
+        this.updateShoppingCarList();
+      });
+      
+    
+    }
+    
+    
+    this.userLogged.nContracts = this.userLogged.shoppingcart.contracts.length;
+   
   }
 
   goToPerfil(user:User):void{
-    console.log("Should open Page");
     this.navCtrl.push(PerfilPage,  {
       userChoosed: user
     });

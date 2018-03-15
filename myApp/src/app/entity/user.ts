@@ -4,6 +4,7 @@ import { Preference } from './preference';
 import { City } from './city';
 import { Favorite } from './favorite';
 import { ClientServiceType } from './clientservicetype';
+import { ShoppingCart } from './shoppingcart';
 
 export class User{
 	idUsers: number;
@@ -20,7 +21,10 @@ export class User{
 	sexType: SexType;
 	preferences: Preference[];
 	isFavorite:boolean;
+	isAddedShopCart:boolean;
 	dateBirth: Date;
 	age: number;
 	clientServicesType: ClientServiceType[];
+	shoppingcart: ShoppingCart;
+	nContracts: number;
 }
